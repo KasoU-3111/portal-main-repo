@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Updated primary dark teal to #01292d */
+  --ink: #01292d;
+  --ink-2: #001f22;
+  --paper: #f8f6f0;
+  --paper-2: #ede8dc;
+  --accent: #176f66;
+  --accent-2: #3db88f;
+  --mist: #788c85;
+  --line: #dcd5c5;
+}
+
+@layer base {
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: var(--accent-2);
+    color: var(--ink);
+  }
+}

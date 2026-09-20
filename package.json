@@ -1,0 +1,14 @@
+{
+  "name": "ibd-platform-monorepo",
+  "private": true,
+  "scripts": {
+    "dev:hub": "npm --prefix apps/hub run dev -- --port 5173",
+    "dev:doctor": "npm --prefix apps/doctor-portal run dev -- --port 8080",
+    "dev:patient": "npm --prefix apps/patient-portal run dev -- --port 8081",
+    "dev:admin": "npm --prefix apps/admin-portal run dev -- --port 8082",
+    "dev:all": "npx concurrently \"npm run dev:hub\" \"npm run dev:doctor\" \"npm run dev:patient\" \"npm run dev:admin\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

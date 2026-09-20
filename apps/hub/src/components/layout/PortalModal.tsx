@@ -6,6 +6,19 @@ interface Props {
   onClose: () => void;
 }
 
+// Configured environment endpoints with local development fallbacks
+const PORTAL_URLS = {
+  doctor:
+    import.meta.env.VITE_DOCTOR_PORTAL_URL ||
+    "https://portal-main-repo-y6bs.vercel.app",
+  patient:
+    import.meta.env.VITE_PATIENT_PORTAL_URL ||
+    "https://portal-main-repo-njoa.vercel.app",
+  admin:
+    import.meta.env.VITE_ADMIN_PORTAL_URL ||
+    "https://portal-main-repo-pwg6.vercel.app",
+};
+
 export const PortalModal: React.FC<Props> = ({ isOpen, onClose }) => {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
 
@@ -13,15 +26,14 @@ export const PortalModal: React.FC<Props> = ({ isOpen, onClose }) => {
 
   const handleRoleSelect = (role: string) => {
     setSelectedRole(role);
-    if (role === "Doctor Portal") {
-      // Launch Doctor Dashboard on port 8080
-      window.open("http://localhost:8080", "_blank", "noopener,noreferrer");
-    } else if (role === "Patient Portal") {
-      // Launch Patient Dashboard on port 8081
-      window.open("http://localhost:8081", "_blank", "noopener,noreferrer");
-    } else if (role === "Admin Panel") {
-      // Launch Admin Dashboard on port 8082
-      window.open("http://localhost:8082", "_blank", "noopener,noreferrer");
+    let targetUrl = "";
+
+    if (role === "Doctor Portal") targetUrl = PORTAL_URLS.doctor;
+    if (role === "Patient Portal") targetUrl = PORTAL_URLS.patient;
+    if (role === "Admin Panel") targetUrl = PORTAL_URLS.admin;
+
+    if (targetUrl) {
+      window.open(targetUrl, "_blank", "noopener,noreferrer");
     }
   };
 
@@ -62,20 +74,17 @@ export const PortalModal: React.FC<Props> = ({ isOpen, onClose }) => {
             {
               role: "Doctor Portal",
               desc: "For clinicians and IBD specialists",
-              port: "8080",
-              external: true,
+              url: PORTAL_URLS.doctor,
             },
             {
               role: "Patient Portal",
               desc: "For patients and personal health tracking",
-              port: "8081",
-              external: true,
+              url: PORTAL_URLS.patient,
             },
             {
               role: "Admin Panel",
               desc: "For platform administration & content",
-              port: "8082",
-              external: true,
+              url: PORTAL_URLS.admin,
             },
           ].map((item) => (
             <button
@@ -91,57 +100,30 @@ export const PortalModal: React.FC<Props> = ({ isOpen, onClose }) => {
                 <span className="flex items-center gap-1.5 text-xs font-semibold text-ink">
                   {selectedRole === item.role && <Check className="size-3.5 text-accent" />}
                   {item.role}
-                  {item.external && <ExternalLink className="size-3 text-accent" />}
+                  <ExternalLink className="size-3 text-accent" />
                 </span>
                 <span className="mt-2 block text-[11px] leading-relaxed text-ink/60">
                   {item.desc}
                 </span>
               </div>
-              {item.port && (
-                <span className="mt-3 text-[9px] font-mono text-mist uppercase">
-                  Port :{item.port}
-                </span>
-              )}
             </button>
           ))}
         </div>
 
-        {/* Doctor Portal Active Feedback */}
-        {selectedRole === "Doctor Portal" && (
+        {/* Portal Active Launch Feedback */}
+        {selectedRole && (
           <div className="mt-4 rounded-lg bg-accent/10 border border-accent/30 p-3 text-xs text-ink flex items-center justify-between">
-            <span>Opening Doctor Dashboard at <code className="font-mono bg-paper px-1 py-0.5 rounded text-accent">localhost:8080</code>...</span>
+            <span>
+              Opening <strong className="font-semibold">{selectedRole}</strong>...
+            </span>
             <a
-              href="http://localhost:8080"
-              target="_blank"
-              rel="noreferrer"
-              className="text-accent font-semibold hover:underline flex items-center gap-1"
-            >
-              Launch <ExternalLink className="size-3" />
-            </a>
-          </div>
-        )}
-
-        {/* Patient Portal Active Feedback */}
-        {selectedRole === "Patient Portal" && (
-          <div className="mt-4 rounded-lg bg-accent/10 border border-accent/30 p-3 text-xs text-ink flex items-center justify-between">
-            <span>Opening Patient Dashboard at <code className="font-mono bg-paper px-1 py-0.5 rounded text-accent">localhost:8081</code>...</span>
-            <a
-              href="http://localhost:8081"
-              target="_blank"
-              rel="noreferrer"
-              className="text-accent font-semibold hover:underline flex items-center gap-1"
-            >
-              Launch <ExternalLink className="size-3" />
-            </a>
-          </div>
-        )}
-
-        {/* Admin Panel Active Feedback */}
-        {selectedRole === "Admin Panel" && (
-          <div className="mt-4 rounded-lg bg-accent/10 border border-accent/30 p-3 text-xs text-ink flex items-center justify-between">
-            <span>Opening Admin Dashboard at <code className="font-mono bg-paper px-1 py-0.5 rounded text-accent">localhost:8082</code>...</span>
-            <a
-              href="http://localhost:8082"
+              href={
+                selectedRole === "Doctor Portal"
+                  ? PORTAL_URLS.doctor
+                  : selectedRole === "Patient Portal"
+                  ? PORTAL_URLS.patient
+                  : PORTAL_URLS.admin
+              }
               target="_blank"
               rel="noreferrer"
               className="text-accent font-semibold hover:underline flex items-center gap-1"

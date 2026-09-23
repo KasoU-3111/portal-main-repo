@@ -91,7 +91,7 @@ function LoginPage() {
               <Input
                 id="email"
                 type="email"
-                defaultValue="arjun.mehta@meridian.health"
+                defaultValue="arjun.mehta@gmail.com"
                 className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-sm"
               />
             </div>
@@ -103,7 +103,7 @@ function LoginPage() {
               <Input
                 id="password"
                 type="password"
-                defaultValue="prototype"
+                defaultValue="1234"
                 className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-sm"
               />
             </div>

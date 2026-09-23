@@ -24,7 +24,7 @@ export function PortalHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-30 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border bg-card/85 px-4 py-3 backdrop-blur sm:px-6">
+    <header className="sticky top-0 z-30 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border bg-background/80 px-4 py-3 backdrop-blur sm:px-6">
       <div className="flex min-w-0 items-center gap-3">
         <Sheet>
           <SheetTrigger asChild>
@@ -32,14 +32,14 @@ export function PortalHeader() {
               <Menu className="size-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[280px] p-0">
+          <SheetContent side="left" className="w-[280px] p-0 border-r border-sidebar-border bg-sidebar">
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <SidebarNav />
           </SheetContent>
         </Sheet>
         <div className="min-w-0">
           <p className="truncate text-sm font-medium text-foreground">Patient Care Portal</p>
-          <p className="truncate text-xs text-muted-foreground">name-portal IBD · Demo environment</p>
+          <p className="truncate text-xs text-muted-foreground">MERIDIAN IBD · Demo environment</p>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ export function PortalHeader() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="relative" aria-label="Notifications">
               <Bell className="size-5" />
-              <span className="absolute right-2 top-2 size-2 rounded-full bg-destructive ring-2 ring-card" />
+              <span className="absolute right-2 top-2 size-2 rounded-full bg-destructive ring-2 ring-background" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-80">
@@ -65,7 +65,7 @@ export function PortalHeader() {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition-colors hover:bg-accent">
+            <button className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition-colors hover:bg-secondary">
               <span className="grid size-9 shrink-0 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
                 {patient.initials}
               </span>

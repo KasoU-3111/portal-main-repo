@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Activity, Lock, Mail, ShieldCheck } from "lucide-react";
+import { Activity, Lock, ShieldCheck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,19 +11,12 @@ import { signIn } from "@/lib/auth";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Patient Sign In — IBD Knowledge Hub Patient Care Portal" },
+      { title: "Patient Sign In — MERIDIAN IBD Patient Care Portal" },
       {
         name: "description",
-        content:
-          "Secure sign-in for the IBD Patient Care Portal. Prototype demonstration environment with fictional data.",
+        content: "Secure sign-in for the MERIDIAN IBD Patient Care Portal. Prototype demonstration environment.",
       },
-      { property: "og:title", content: "IBD Knowledge Hub — Patient Care Portal Sign In" },
-      {
-        property: "og:description",
-        content: "Sign in to view your appointments, reports and treatment plan.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "MERIDIAN IBD — Patient Care Portal Sign In" },
     ],
   }),
   component: LoginPage,
@@ -49,137 +42,112 @@ function LoginPage() {
   }
 
   return (
-    <main className="grid min-h-screen lg:grid-cols-[1.1fr_1fr]">
-      {/* Brand panel matching #01292D -> #176F66 */}
-      <section 
-        className="relative hidden flex-col justify-between p-12 lg:flex" 
-        style={{ background: "linear-gradient(135deg, #01292d 0%, #176f66 100%)" }}
-      >
+    <main className="grid min-h-screen lg:grid-cols-2 bg-[#F8F6F0]">
+      {/* Left Brand Panel — Solid Primary Dark Teal (#01292D) */}
+      <section className="relative hidden flex-col justify-between bg-[#01292D] p-12 lg:flex xl:p-20">
+        
+        {/* Top Logo */}
         <div className="flex items-center gap-3">
-          <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-white/15 ring-1 ring-white/25">
-            <Activity className="size-5 text-white" />
+          <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-white/10 border border-white/10">
+            <Activity className="size-5 text-[#F8F6F0]" />
           </div>
-          <div className="min-w-0">
-            <p className="text-sm font-semibold tracking-[0.2em] text-white">
-              IBD Knowledge Hub
-            </p>
-            <p className="text-xs text-white/70">Patient Care Portal</p>
-          </div>
+          <span className="text-base font-medium tracking-wide text-[#F8F6F0]">
+            MERIDIAN IBD
+          </span>
         </div>
 
-        <div className="max-w-md">
-          <h2 className="font-display text-3xl font-semibold leading-tight text-white">
+        {/* Center Content */}
+        <div className="max-w-lg">
+          <h1 className="text-4xl font-bold tracking-tight text-[#F8F6F0] xl:text-5xl leading-[1.15]">
             Your care, clearly organised in one place.
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-white/80">
-            Track appointments, reports, treatment progress and clinician notes from your IBD care
-            team — designed to be calm, clear and easy to follow.
+          </h1>
+          <p className="mt-6 text-lg leading-relaxed text-[#A8C2C0]">
+            Track appointments, reports, treatment progress and clinician notes from your IBD care team — designed to be calm, clear and easy to follow.
           </p>
-          <ul className="mt-8 space-y-3 text-sm text-white/90">
-            {["Appointments & follow-ups", "Lab reports and health trends", "Treatment plan and doctor notes"].map(
-              (item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 shrink-0 text-[#3db88f]" />
-                  {item}
-                </li>
-              ),
-            )}
-          </ul>
         </div>
 
-        <p className="text-xs text-white/60">
-          Prototype environment. All data shown is fictional and not suitable for real patient
-          records.
-        </p>
+        {/* Bottom Footer */}
+        <div className="flex items-center gap-2 text-sm text-[#A8C2C0]">
+          <ShieldCheck className="size-4 opacity-80" />
+          <span>Prototype environment · fictional demonstration data</span>
+        </div>
       </section>
 
-      {/* Form panel */}
-      <section className="flex items-center justify-center bg-background px-5 py-12 sm:px-10">
-        <div className="w-full max-w-sm">
-          <div className="mb-8 lg:hidden">
+      {/* Right Form Panel — Warm Ivory (#F8F6F0) */}
+      <section className="flex items-center justify-center px-5 py-12 sm:px-10">
+        <div className="w-full max-w-[380px]">
+          
+          {/* Mobile Logo */}
+          <div className="mb-10 lg:hidden">
             <div className="flex items-center gap-3">
-              <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
+              <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-[#176F66] text-[#F8F6F0]">
                 <Activity className="size-5" />
               </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold tracking-[0.2em] text-foreground">IBD Knowledge Hub</p>
-                <p className="text-xs text-muted-foreground">Patient Care Portal</p>
-              </div>
+              <span className="text-base font-semibold tracking-wide text-[#01292D]">
+                MERIDIAN IBD
+              </span>
             </div>
           </div>
 
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Patient sign in</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Enter your credentials to access your health overview.
+          <h2 className="text-3xl font-bold tracking-tight text-[#01292D]">Patient sign in</h2>
+          <p className="mt-2 text-sm text-[#5B7573]">
+            Use any credentials to enter the prototype.
           </p>
 
-          <form onSubmit={handleSubmit} className="mt-8 space-y-5" noValidate>
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6" noValidate>
+            
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <div className="relative">
-                <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  id="email"
-                  type="email"
-                  autoComplete="username"
-                  placeholder="patient@gmail.com"
-                  className="pl-9"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+              <Label htmlFor="email" className="text-sm font-medium text-[#01292D]">
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                autoComplete="username"
+                placeholder="patient@gmail.com"
+                className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-sm"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <div className="relative">
-                <Lock className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  id="password"
-                  type="password"
-                  autoComplete="current-password"
-                  placeholder="••••"
-                  className="pl-9"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+              <Label htmlFor="password" className="text-sm font-medium text-[#01292D]">
+                Password
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                autoComplete="current-password"
+                placeholder="••••••••"
+                className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-sm"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
 
             {error && (
               <p
                 role="alert"
-                className="rounded-lg border border-destructive/25 bg-destructive/8 px-3 py-2 text-sm text-destructive"
+                className="rounded-lg border border-destructive/25 bg-destructive/10 px-3 py-2 text-sm text-destructive"
               >
                 {error}
               </p>
             )}
 
-            <Button type="submit" className="w-full bg-[#176f66] hover:bg-[#01292d] text-white" size="lg">
-              Sign In
+            <Button 
+              type="submit" 
+              className="w-full h-10 bg-[#176F66] hover:bg-[#002529] text-[#F8F6F0] font-medium transition-colors shadow-sm"
+            >
+              Sign in as patient
             </Button>
           </form>
 
-          <div className="mt-6 rounded-xl border border-border bg-card p-4 shadow-card">
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#176f66]">
-              Prototype / Demo Environment
-            </p>
-            <dl className="mt-3 space-y-1 text-sm">
-              <div className="flex justify-between gap-3">
-                <dt className="text-muted-foreground">Email</dt>
-                <dd className="font-medium text-foreground">patient@gmail.com</dd>
-              </div>
-              <div className="flex justify-between gap-3">
-                <dt className="text-muted-foreground">Password</dt>
-                <dd className="font-medium text-foreground">1234</dd>
-              </div>
-            </dl>
+          {/* Minimalist prototype credentials hint */}
+          <div className="mt-8 flex items-center justify-center gap-2 text-sm text-[#5B7573]">
+            <Lock className="size-4 opacity-70" />
+            <span>Demo credentials: patient@gmail.com / 1234</span>
           </div>
-
-          <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-            Demonstration prototype only. Not intended for storing real patient data. A production
-            release would add secure authentication, encryption, consent management and audit logs.
-          </p>
         </div>
       </section>
     </main>

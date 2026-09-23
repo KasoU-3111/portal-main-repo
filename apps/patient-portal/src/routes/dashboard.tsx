@@ -30,13 +30,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
-      { title: "Health Overview — name-portal IBD Patient Portal" },
+      { title: "Health Overview — MERIDIAN IBD Patient Portal" },
       {
         name: "description",
         content:
           "Patient dashboard with appointments, treatment status, lab reports, CRP trends and doctor notes. Fictional demonstration data.",
       },
-      { property: "og:title", content: "name-portal IBD — Patient Health Overview" },
+      { property: "og:title", content: "MERIDIAN IBD — Patient Health Overview" },
       {
         property: "og:description",
         content: "Appointments, treatment, reports and clinician notes in one calm view.",
@@ -125,7 +125,7 @@ function SectionTitle({ title, action }: { title: string; action?: string }) {
     <div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
       <h2 className="min-w-0 text-base font-semibold text-foreground">{title}</h2>
       {action && (
-        <Button variant="ghost" size="sm" className="shrink-0 text-primary hover:text-primary">
+        <Button variant="ghost" size="sm" className="shrink-0 text-[#176F66] hover:text-[#01292D]">
           {action} <ArrowRight className="size-3.5" />
         </Button>
       )}
@@ -140,28 +140,28 @@ function OverviewCards() {
       value: patient.diagnosis,
       sub: "Diagnosed condition",
       icon: Stethoscope,
-      tone: "text-primary bg-primary-soft",
+      tone: "text-[#176F66] bg-[#176F66]/10",
     },
     {
       label: "Disease Status",
       value: patient.status,
       sub: patient.statusDetail,
       icon: Activity,
-      tone: "text-warning-foreground bg-warning/20",
+      tone: "text-[#D97706] bg-[#D97706]/10",
     },
     {
       label: "Next Appointment",
       value: "Today",
       sub: upcomingAppointment.time,
       icon: CalendarClock,
-      tone: "text-info bg-info/12",
+      tone: "text-[#1BA9BB] bg-[#1BA9BB]/10",
     },
     {
       label: "Treatment Status",
       value: currentTreatment.status,
       sub: currentTreatment.medication,
       icon: Pill,
-      tone: "text-success bg-success/12",
+      tone: "text-[#176F66] bg-[#176F66]/10",
     },
   ];
 
@@ -188,9 +188,9 @@ function StatusPill({ label, tone }: { label: string; tone: "success" | "info" |
     <span
       className={cn(
         "inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium",
-        tone === "success" && "bg-success/12 text-success",
-        tone === "info" && "bg-info/12 text-info",
-        tone === "muted" && "bg-muted text-muted-foreground",
+        tone === "success" && "bg-[#176F66]/15 text-[#176F66]",
+        tone === "info" && "bg-[#1BA9BB]/15 text-[#002529]",
+        tone === "muted" && "bg-[#E8ECEB] text-[#5B7573]",
       )}
     >
       {label}
@@ -200,11 +200,11 @@ function StatusPill({ label, tone }: { label: string; tone: "success" | "info" |
 
 function AppointmentCard() {
   return (
-    <Card className="border-primary/25">
+    <Card className="border-[#176F66]/30">
       <SectionTitle title="Upcoming Appointment" />
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 sm:flex sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
-          <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary-soft text-primary">
+          <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#176F66]/10 text-[#176F66]">
             <Stethoscope className="size-5" />
           </span>
           <div className="min-w-0">
@@ -230,7 +230,7 @@ function AppointmentCard() {
         ))}
       </dl>
 
-      <Button className="mt-5 w-full sm:w-auto">View Appointment</Button>
+      <Button className="mt-5 w-full sm:w-auto bg-[#176F66] text-[#F8F6F0] hover:bg-[#01292D]">View Appointment</Button>
     </Card>
   );
 }
@@ -240,7 +240,7 @@ function TreatmentCard() {
     <Card>
       <SectionTitle title="Current Treatment" />
       <div className="flex items-center gap-3">
-        <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-success/12 text-success">
+        <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-[#176F66]/10 text-[#176F66]">
           <Pill className="size-5" />
         </span>
         <div className="min-w-0">
@@ -264,7 +264,7 @@ function TreatmentCard() {
           <dd className="text-right font-medium text-foreground">{currentTreatment.response}</dd>
         </div>
       </dl>
-      <Button variant="ghost" size="sm" className="mt-4 px-0 text-primary hover:text-primary">
+      <Button variant="ghost" size="sm" className="mt-4 px-0 text-[#176F66] hover:text-[#01292D]">
         View Treatment Plan <ArrowRight className="size-3.5" />
       </Button>
     </Card>
@@ -281,7 +281,7 @@ function ReportsCard() {
             key={r.name}
             className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 py-3"
           >
-            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-secondary text-muted-foreground">
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#E8ECEB] text-[#01292D]">
               <FileText className="size-4" />
             </span>
             <div className="min-w-0">
@@ -307,36 +307,36 @@ function TrendsCard() {
       <div className="mt-4 h-56 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={crpTrend} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#D8E2E1" vertical={false} />
             <XAxis
               dataKey="month"
               tickLine={false}
               axisLine={false}
-              tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
+              tick={{ fontSize: 12, fill: "#5B7573" }}
             />
             <YAxis
               tickLine={false}
               axisLine={false}
               width={44}
               domain={[0, 16]}
-              tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
+              tick={{ fontSize: 12, fill: "#5B7573" }}
             />
             <Tooltip
               contentStyle={{
                 borderRadius: 12,
-                border: "1px solid var(--border)",
-                background: "var(--card)",
+                border: "1px solid #D8E2E1",
+                background: "#FFFFFF",
                 fontSize: 12,
-                color: "var(--foreground)",
+                color: "#01292D",
               }}
               formatter={(v: number | string) => [`${v} mg/L`, "CRP"]}
             />
             <Line
               type="monotone"
               dataKey="value"
-              stroke="var(--primary)"
+              stroke="#176F66"
               strokeWidth={2.5}
-              dot={{ r: 3, fill: "var(--primary)" }}
+              dot={{ r: 3, fill: "#176F66" }}
               activeDot={{ r: 5 }}
             />
           </LineChart>
@@ -355,13 +355,13 @@ function NotesCard() {
       <SectionTitle title="Recent Doctor Notes" action="View All Notes" />
       <ul className="space-y-4">
         {doctorNotes.map((n) => (
-          <li key={n.date} className="rounded-xl border border-border bg-secondary/50 p-4">
+          <li key={n.date} className="rounded-xl border border-border bg-[#E8ECEB]/40 p-4">
             <div className="flex items-center justify-between gap-3">
               <p className="text-xs font-medium text-muted-foreground">{n.date}</p>
               <StatusPill label="Read only" tone="muted" />
             </div>
             <p className="mt-2 text-sm leading-relaxed text-foreground">"{n.body}"</p>
-            <p className="mt-3 text-xs font-medium text-primary">{n.author}</p>
+            <p className="mt-3 text-xs font-medium text-[#176F66]">{n.author}</p>
           </li>
         ))}
       </ul>
@@ -371,9 +371,9 @@ function NotesCard() {
 
 function SupportCard() {
   return (
-    <Card className="bg-primary-soft/60">
+    <Card className="bg-[#E8F4F3]/60 border-[#176F66]/20">
       <div className="flex items-center gap-3">
-        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-card text-primary">
+        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-card text-[#176F66]">
           <LifeBuoy className="size-5" />
         </span>
         <h2 className="text-base font-semibold text-foreground">Need Help?</h2>
@@ -381,8 +381,8 @@ function SupportCard() {
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
         Have a question about your appointment, reports or treatment?
       </p>
-      <Button variant="outline" className="mt-4 w-full bg-card">
-        <CheckCircle2 className="size-4" /> Contact Support
+      <Button variant="outline" className="mt-4 w-full bg-card border-[#D8E2E1] text-[#01292D] hover:bg-[#E8ECEB]">
+        <CheckCircle2 className="size-4 text-[#176F66]" /> Contact Support
       </Button>
     </Card>
   );

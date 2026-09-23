@@ -1,3 +1,4 @@
+/* \admin-portal/src/routes/admin.$.tsx */
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { Construction } from "lucide-react";
 

@@ -88,7 +88,7 @@ function AdminLoginPage() {
               <Input
                 id="admin-email"
                 type="email"
-                defaultValue="admin@gmail.com"
+                defaultValue="admin@meridian.health"
                 className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-xs"
               />
             </div>
@@ -100,7 +100,7 @@ function AdminLoginPage() {
               <Input
                 id="admin-password"
                 type="password"
-                defaultValue="1234"
+                defaultValue="prototype"
                 className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-xs"
               />
             </div>

@@ -103,8 +103,9 @@ function LoginPage() {
               <Input
                 id="email"
                 type="email"
+                defaultValue="aarav.sharma@meridian.health"
                 autoComplete="username"
-                placeholder="patient@gmail.com"
+                placeholder="aarav.sharma@meridian.health"
                 className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -118,6 +119,7 @@ function LoginPage() {
               <Input
                 id="password"
                 type="password"
+                defaultValue="patient123"
                 autoComplete="current-password"
                 placeholder="••••••••"
                 className="h-10 bg-white border-[#D8E2E1] text-[#01292D] placeholder:text-[#A8C2C0] focus-visible:ring-[#176F66] shadow-sm"
@@ -146,7 +148,7 @@ function LoginPage() {
           {/* Minimalist prototype credentials hint */}
           <div className="mt-8 flex items-center justify-center gap-2 text-sm text-[#5B7573]">
             <Lock className="size-4 opacity-70" />
-            <span>Demo credentials: patient@gmail.com / 1234</span>
+            <span>Demo credentials: aarav.sharma@meridian.health / patient123</span>
           </div>
         </div>
       </section>

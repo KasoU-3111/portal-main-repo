@@ -16,13 +16,13 @@ import {
 const PORTAL_URLS = {
   doctor:
     import.meta.env.VITE_DOCTOR_PORTAL_URL ||
-    "http://localhost:8080/login",
+    "https://portal-main-repo-y6bs.vercel.app",
   patient:
     import.meta.env.VITE_PATIENT_PORTAL_URL ||
-    "http://localhost:8081/login",
+    "https://portal-main-repo-njoa.vercel.app",
   admin:
     import.meta.env.VITE_ADMIN_PORTAL_URL ||
-    "http://localhost:8082/login",
+    "https://portal-main-repo-pwg6.vercel.app",
 };
 
 type RoleKey = "doctor" | "patient" | "admin";

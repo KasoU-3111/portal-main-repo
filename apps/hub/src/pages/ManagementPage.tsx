@@ -13,6 +13,7 @@ export const ManagementPage: React.FC = () => {
         description="Modern gastroenterology prioritizes objective mucosal healing, steroid avoidance, and sustained biological remission."
         topics={TREATMENT_TOPICS}
         action="View Medication Classes"
+        baseRoute="/treatment/"
       />
       <DietAndLifestyle />
       <ContentBand
@@ -22,6 +23,7 @@ export const ManagementPage: React.FC = () => {
         description="Strategies for everyday stability: gut-brain axis support, restorative sleep hygiene, travel kits, and legal accommodation rights."
         topics={LIVING_TOPICS}
         action="View Lifestyle Guidelines"
+        baseRoute="/living/"
         dark
       />
     </div>

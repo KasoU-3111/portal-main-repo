@@ -30,11 +30,6 @@ export const Hero: React.FC = () => {
               <Stethoscope className="size-3.5" /> Explore Latest Research
             </a>
           </div>
-          <div className="mt-8 flex gap-6 text-[12px] text-mist font-mono">
-            <div><span className="block font-display text-xl text-paper">6</span> pathways</div>
-            <div><span className="block font-display text-xl text-paper">38</span> guides</div>
-            <div><span className="block font-display text-xl text-paper">214</span> sources cited</div>
-          </div>
         </div>
 
         {/* Hero Diagram */}

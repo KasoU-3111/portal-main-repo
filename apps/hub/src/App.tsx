@@ -10,6 +10,9 @@ import { ResearchPage } from "./pages/ResearchPage";
 import { SpecialistsPage } from "./pages/SpecialistsPage";
 import { ResourcesPage } from "./pages/ResourcesPage";
 import { LoginPage } from "./pages/LoginPage";
+import { TreatmentArticlePage } from "./pages/treatment/TreatmentArticlePage";
+import { UnderstandingArticlePage } from "./pages/understanding/UnderstandingArticlePage";
+import { LivingArticlePage } from "./pages/living/LivingArticlePage";
 
 const AppRoutes: React.FC = () => {
   const [portalOpen, setPortalOpen] = useState(false);
@@ -33,6 +36,11 @@ const AppRoutes: React.FC = () => {
           <Route path="/specialists" element={<SpecialistsPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/login" element={<LoginPage />} />
+          
+          {/* Dynamic Article Routes */}
+          <Route path="/treatment/:slug" element={<TreatmentArticlePage />} />
+          <Route path="/understanding/:slug" element={<UnderstandingArticlePage />} />
+          <Route path="/living/:slug" element={<LivingArticlePage />} />
         </Routes>
       </main>
 

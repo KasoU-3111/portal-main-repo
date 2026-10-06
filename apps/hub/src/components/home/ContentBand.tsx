@@ -1,14 +1,21 @@
 import React from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+export interface TopicItem {
+  label: string;
+  slug?: string;
+}
 
 interface Props {
   id: string;
   eyebrow: string;
   title: string;
   description: string;
-  topics: string[];
+  topics: (string | TopicItem)[];
   action: string;
   dark?: boolean;
+  baseRoute?: string;
 }
 
 export const ContentBand: React.FC<Props> = ({
@@ -19,6 +26,7 @@ export const ContentBand: React.FC<Props> = ({
   topics,
   action,
   dark = false,
+  baseRoute = "",
 }) => {
   return (
     <section id={id} className={dark ? "bg-ink text-paper" : "bg-paper text-ink"}>
@@ -45,20 +53,36 @@ export const ContentBand: React.FC<Props> = ({
           </a>
         </div>
         <div className="grid gap-2 sm:grid-cols-2 lg:col-span-7">
-          {topics.map((topic, index) => (
-            <div
-              key={topic}
-              className={`flex items-center gap-3 border-b py-3 text-sm ${
-                dark ? "border-paper/10 text-paper/80" : "border-line text-ink/75"
-              }`}
-            >
-              <span className={`font-mono text-[10px] ${dark ? "text-accent-2" : "text-accent"}`}>
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span>{topic}</span>
-              <ChevronDown className="ml-auto size-3 -rotate-90 opacity-40" />
-            </div>
-          ))}
+          {topics.map((topic, index) => {
+            const isObject = typeof topic !== "string";
+            const label = isObject ? (topic as TopicItem).label : (topic as string);
+            const slug = isObject ? (topic as TopicItem).slug : undefined;
+            
+            const Wrapper = slug ? Link : "div";
+
+            return (
+              <Wrapper
+                key={label}
+                to={slug ? `${baseRoute}${slug}` : ""}
+                className={`group flex items-center gap-3 border-b py-3 text-sm transition-colors ${
+                  dark 
+                    ? "border-paper/10 text-paper/80 hover:text-paper" 
+                    : "border-line text-ink/75 hover:text-ink"
+                }`}
+              >
+                <span className={`font-mono text-[10px] ${dark ? "text-accent-2" : "text-accent"}`}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>{label}</span>
+                
+                <ChevronRight 
+                  className={`ml-auto size-3 opacity-40 transition-transform duration-200 ${
+                    slug ? "group-hover:translate-x-1 group-hover:opacity-100" : ""
+                  }`} 
+                />
+              </Wrapper>
+            );
+          })}
         </div>
       </div>
     </section>

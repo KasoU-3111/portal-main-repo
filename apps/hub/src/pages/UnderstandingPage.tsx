@@ -14,6 +14,7 @@ export const UnderstandingPage: React.FC = () => {
         description="Explore the immunological baseline of Inflammatory Bowel Disease and how tissue differentiation shapes every clinical decision."
         topics={UNDERSTANDING_TOPICS}
         action="Explore Pathology"
+        baseRoute="/understanding/"
       />
       <DiseaseComparison />
       <SymptomsDiagnosisFlow />

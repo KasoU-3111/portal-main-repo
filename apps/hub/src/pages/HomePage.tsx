@@ -11,8 +11,8 @@ export const HomePage: React.FC<Props> = () => {
   return (
     <>
       <Hero />
-      <ScenarioExplorer />
       <BranchesTree />
+      <ScenarioExplorer />
     </>
   );
 };

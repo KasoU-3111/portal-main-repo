@@ -11,7 +11,7 @@ export interface BranchItem {
   number: string;
   title: string;
   description: string;
-  count: string;
+  count?: string;
   href: string;
 }
 

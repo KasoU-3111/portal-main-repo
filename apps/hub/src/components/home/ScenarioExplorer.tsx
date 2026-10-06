@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, Compass, ShieldAlert, Sparkles, Stethoscope, BookOpen } from "lucide-react";
+import { ArrowRight, Compass, ShieldAlert, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface Scenario {

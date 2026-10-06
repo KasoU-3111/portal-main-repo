@@ -3,7 +3,11 @@ import { Hero } from "../components/home/Hero";
 import { ScenarioExplorer } from "../components/home/ScenarioExplorer";
 import { BranchesTree } from "../components/home/BranchesTree";
 
-export const HomePage: React.FC = () => {
+interface Props {
+  onOpenPortal: () => void;
+}
+
+export const HomePage: React.FC<Props> = () => {
   return (
     <>
       <Hero />

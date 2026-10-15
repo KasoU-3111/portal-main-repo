@@ -1,10 +1,19 @@
-// Centralized fictional demonstration data for the name-portal IBD prototype.
+// Centralized fictional demonstration data for the MERIDIAN IBD prototype.
 // All names, IDs and clinical values are invented for demo purposes only.
+
+// ============================================================
+// DEMO LOGIN CREDENTIALS
+// Update these values to change the credentials used by login.tsx.
+// ============================================================
 
 export const DEMO_CREDENTIALS = {
   email: "aarav.sharma@meridian.health",
   password: "patient123",
 };
+
+// ============================================================
+// PATIENT INFORMATION
+// ============================================================
 
 export const patient = {
   name: "Aarav Sharma",
@@ -19,11 +28,19 @@ export const patient = {
   initials: "AS",
 };
 
+// ============================================================
+// DOCTOR INFORMATION
+// ============================================================
+
 export const doctor = {
   name: "Dr. Arjun Mehta",
   specialization: "Gastroenterologist",
   subSpecialization: "IBD Specialist",
 };
+
+// ============================================================
+// APPOINTMENT
+// ============================================================
 
 export const upcomingAppointment = {
   date: "21 August 2026",
@@ -32,6 +49,10 @@ export const upcomingAppointment = {
   status: "Confirmed",
 };
 
+// ============================================================
+// CURRENT TREATMENT
+// ============================================================
+
 export const currentTreatment = {
   medication: "Adalimumab",
   status: "Active",
@@ -39,12 +60,36 @@ export const currentTreatment = {
   response: "Partial improvement",
 };
 
+// ============================================================
+// RECENT REPORTS
+// ============================================================
+
 export const recentReports = [
-  { name: "CRP Blood Test", date: "21 Aug 2026", status: "Available" },
-  { name: "Fecal Calprotectin", date: "18 Aug 2026", status: "Reviewed" },
-  { name: "CBC", date: "15 Aug 2026", status: "Reviewed" },
-  { name: "Endoscopy Report", date: "10 Aug 2026", status: "Reviewed" },
+  {
+    name: "CRP Blood Test",
+    date: "21 Aug 2026",
+    status: "Available",
+  },
+  {
+    name: "Fecal Calprotectin",
+    date: "18 Aug 2026",
+    status: "Reviewed",
+  },
+  {
+    name: "CBC",
+    date: "15 Aug 2026",
+    status: "Reviewed",
+  },
+  {
+    name: "Endoscopy Report",
+    date: "10 Aug 2026",
+    status: "Reviewed",
+  },
 ];
+
+// ============================================================
+// CRP TREND
+// ============================================================
 
 export const crpTrend = [
   { month: "Jan", value: 14.2 },
@@ -54,6 +99,10 @@ export const crpTrend = [
   { month: "May", value: 8.9 },
   { month: "Jun", value: 8.4 },
 ];
+
+// ============================================================
+// DOCTOR NOTES
+// ============================================================
 
 export const doctorNotes = [
   {
@@ -68,11 +117,22 @@ export const doctorNotes = [
   },
 ];
 
+// ============================================================
+// NOTIFICATIONS
+// ============================================================
+
 export const notifications = [
-  { title: "Your CRP report is now available.", time: "10 min ago" },
   {
-    title: "Appointment with Dr. Arjun Mehta is scheduled for today at 10:30 AM.",
+    title: "Your CRP report is now available.",
+    time: "10 min ago",
+  },
+  {
+    title:
+      "Appointment with Dr. Arjun Mehta is scheduled for today at 10:30 AM.",
     time: "1 hour ago",
   },
-  { title: "Your treatment plan has been reviewed.", time: "Yesterday" },
+  {
+    title: "Your treatment plan has been reviewed.",
+    time: "Yesterday",
+  },
 ];

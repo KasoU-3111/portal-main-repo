@@ -2,8 +2,8 @@
 // All names, IDs and clinical values are invented for demo purposes only.
 
 export const DEMO_CREDENTIALS = {
-  email: "patient@gmail.com",
-  password: "1234",
+  email: "aarav.sharma@meridian.health",
+  password: "patient123",
 };
 
 export const patient = {
